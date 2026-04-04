@@ -89,6 +89,26 @@ git checkout -b feature/add-your-game
 
 ---
 
+##  Dependencies
+
+By default, games should NOT require external libraries.
+
+If your game needs dependencies:
+
+- Add a `requirements.txt` file inside your game folder
+- Keep dependencies minimal
+- The launcher will NOT install them automatically
+
+Example:
+
+```
+games/chill/mygame/
+  game.py
+  requirements.txt
+```
+
+---
+
 ###  Ideas
 
 - Hangman
