@@ -1,6 +1,6 @@
 import random
 
-# Add your GitHub username here
+
 AUTHOR = "Bhanu-inturi"
 
 
