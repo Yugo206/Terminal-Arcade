@@ -1,5 +1,9 @@
 import random
 
+# Add your GitHub username here
+AUTHOR = "Bhanu-inturi"
+
+
 def generate_question():
     operations = ['+', '-', '*']
     num1 = random.randint(1, 20)
@@ -8,7 +12,6 @@ def generate_question():
 
     question = f"{num1} {op} {num2}"
 
-    # Evaluate correct answer
     if op == '+':
         answer = num1 + num2
     elif op == '-':
@@ -19,12 +22,12 @@ def generate_question():
     return question, answer
 
 
-def play_game():
+def run():
     print("🎮 Welcome to the Calculator Game!")
     print("Solve the math problems.\n")
 
     score = 0
-    rounds = 5  # you can change this
+    rounds = 5
 
     for i in range(rounds):
         question, correct_answer = generate_question()
@@ -43,7 +46,3 @@ def play_game():
             print(f"❌ Wrong! Correct answer was {correct_answer}\n")
 
     print(f"🏁 Game Over! Your score: {score}/{rounds}")
-
-
-if __name__ == "__main__":
-    play_game()
