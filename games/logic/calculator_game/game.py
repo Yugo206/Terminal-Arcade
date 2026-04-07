@@ -23,6 +23,7 @@ def generate_question():
 
 
 def run():
+    print("Game by ", AUTHOR)
     print("🎮 Welcome to the Calculator Game!")
     print("Solve the math problems.\n")
 
