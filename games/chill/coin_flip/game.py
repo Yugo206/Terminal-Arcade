@@ -1,6 +1,7 @@
+AUTHOR = "bhavyainturi9"
 import random
 
-def coin_flip():
+def run():
     print("Welcome to Coin Flip!")
 
     user_choice = input("Guess heads or tails: ").lower()
@@ -16,6 +17,3 @@ def coin_flip():
         print("🎉 You win!")
     else:
         print("😢 You lose!")
-
-if __name__ == "__main__":
-    coin_flip()
