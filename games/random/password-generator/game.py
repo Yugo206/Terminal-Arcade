@@ -6,7 +6,9 @@ def generate_password(length: int) -> str:
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
-if __name__ == "__main__":
+def run():
     Length = int(input("Enter the desired password length: "))
     password = generate_password(Length)
     print(f"Generated password: {password}")
+
+run()
