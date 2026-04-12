@@ -10,5 +10,3 @@ def run():
     Length = int(input("Enter the desired password length: "))
     password = generate_password(Length)
     print(f"Generated password: {password}")
-
-run()
