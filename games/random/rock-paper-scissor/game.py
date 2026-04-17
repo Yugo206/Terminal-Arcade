@@ -72,4 +72,4 @@ def run():
     print(f"You: {user_score} | Computer: {computer_score}")
     print("Thanks for playing!")
     
-    run()
+    
