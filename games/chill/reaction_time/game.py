@@ -69,6 +69,3 @@ def run():
         print("You didn't play any valid rounds!")
         
     print("\nThanks for playing the Reaction Time Test!")
-
-if __name__ == "__main__":
-    run()
