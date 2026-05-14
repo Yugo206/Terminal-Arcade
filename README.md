@@ -65,6 +65,8 @@ terminal-arcade/
 ---
 
 ###  Ideas
+
+- Hangman
 - Timer
 - Quiz
 - Calculator
