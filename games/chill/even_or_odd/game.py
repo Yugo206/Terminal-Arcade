@@ -33,7 +33,3 @@ def run():
         print("😢 You lose!")
 
 print("=== END ====")
-
-# This line ensures the game actually runs when you execute the script
-if __name__ == "__main__":
-    run()
