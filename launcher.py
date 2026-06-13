@@ -2,8 +2,8 @@ import os
 import importlib.util
 import importlib
 
-GAMES_PATH = "games"
-
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+GAMES_PATH = os.path.join(BASE_DIR, "games")
 
 def check_requirements(game_dir):
     req_file = os.path.join(game_dir, "requirements.txt")
