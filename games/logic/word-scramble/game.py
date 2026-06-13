@@ -61,6 +61,3 @@ def run():
         print("Not bad! Keep practicing.")
     else:
         print("Better luck next time!")
-
-if __name__ == "__main__":
-    run()
