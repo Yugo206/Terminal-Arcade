@@ -1,0 +1,61 @@
+name: Terminal Arcade Checks
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Check for forbidden files
+        run: |
+          forbidden=$(find . \( -name "*.pyc" -o -name ".DS_Store" -o -path "*/__pycache__/*" -o -path "*/.idea/*" \))
+
+          if [ -n "$forbidden" ]; then
+            echo "Forbidden files found:"
+            echo "$forbidden"
+            exit 1
+          fi
+
+      - name: Check game structure
+        run: |
+          failed=0
+
+          while IFS= read -r file
+          do
+            if ! grep -q "AUTHOR" "$file"; then
+              echo "Missing AUTHOR in $file"
+              failed=1
+            fi
+
+            if ! grep -q "def run(" "$file"; then
+              echo "Missing run() in $file"
+              failed=1
+            fi
+
+            if grep -q '__name__ == "__main__"' "$file"; then
+              echo "Forbidden main check found in $file"
+              failed=1
+            fi
+
+          done < <(find games -name "game.py")
+
+          if [ $failed -eq 1 ]; then
+            exit 1
+          fi
+
+      - name: Launch loader
+        run: |
+          python launcher.py
