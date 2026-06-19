@@ -56,6 +56,6 @@ jobs:
             exit 1
           fi
 
-      - name: Launch loader
+      - name: Load all games
         run: |
-          python launcher.py
+          python -c "import launcher; games, errors = launcher.load_games(); print(f'Loaded {sum(len(v) for v in games.values())} games'); assert not errors, errors"
