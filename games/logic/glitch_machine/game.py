@@ -1,4 +1,5 @@
 """
+AUTHOR = "Divija2612"
 Glitch Machine
 A corrupted word flashes on screen, replacing some of its letters with
 random symbols (e.g. TERMINAL -> T#RM!N@L). The player must type the
