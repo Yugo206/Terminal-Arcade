@@ -175,7 +175,3 @@ def run():
         if again != "y":
             print(f"\n  {CYAN}Thanks for playing Lucky Number Chronicles. Goodbye!{R}\n")
             break
-
-
-if __name__ == "__main__":
-    run()
