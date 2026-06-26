@@ -168,7 +168,10 @@ def run_game():
 
 
 def run():
-    sys.stdout.reconfigure(encoding='utf-8')
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+    except Exception:
+        pass
     while True:
         run_game()
         again = input(f"  Play again? ({BOLD}y{R}/{BOLD}n{R}): ").strip().lower()
