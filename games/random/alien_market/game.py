@@ -8,6 +8,7 @@ bankrupt or run out of rounds.
 
 import random
 
+AUTHOR = "adjenk"
 START_CREDITS = 100
 TARGET_CREDITS = 500
 
