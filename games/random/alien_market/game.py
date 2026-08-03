@@ -9,8 +9,9 @@ bankrupt or run out of rounds.
 import random
 
 AUTHOR = "adjenk"
-START_CREDITS = 100
+START_CREDITS = 150
 TARGET_CREDITS = 500
+MAX_ROUNDS = 30
 
 CARGO_CAPACITY = 3  # how many stacks you can hold in cargo at once
 MAX_STACK_QTY = 5   # max units bought into a single cargo slot at once
@@ -51,7 +52,7 @@ NUM_ITEMS = 3  # must not exceed len(ITEM_CATALOG), since items can't repeat
 
 # --- ANSI-art title banner (each row its own color, plus a starry border) ---
 BANNER_ROWS = [
-    r"     _    _ _               __  __            _        _   ",
+    r"     _    _ _               __   __            _        _   ",
     r"    / \  | (_) ___ _ __     |  \/  | __ _ _ __| | _____| |_ ",
     r"   / _ \ | | |/ _ \ '_ \    | |\/| |/ _` | '__| |/ / _ \ __|",
     r"  / ___ \| | |  __/ | | |   | |  | | (_| | |  |   <  __/ |_ ",
@@ -154,7 +155,7 @@ def print_status_bar(round_num, credits, owned):
 
     bar = make_progress_bar(credits, TARGET_CREDITS)
     status = (
-        f"Round {round_num} "
+        f"Round {round_num}/{MAX_ROUNDS} "
         f"Credits: {credits}/{TARGET_CREDITS} {bar}  "
         f"Cargo: {len(owned)}/{CARGO_CAPACITY}"
     )
@@ -183,10 +184,8 @@ def run():
         if credits <= 0:
             print(c("\nYou went bankrupt. Game over.", RED + BOLD))
             return
-            if credits >= TARGET_CREDITS:
-                print(c("You win!", GREEN + BOLD))
-            else:
-                print(c("You lose this run.", RED + BOLD))
+        if round_num > MAX_ROUNDS:
+            print(c(f"\nOut of time! Final credits: {credits} (needed {TARGET_CREDITS}).", RED + BOLD))
             return
 
         market = make_market()
@@ -239,7 +238,8 @@ def run():
         else:
             chosen = next(it for it in market if it["id"] == choice)
             price = chosen["buy"]
-            qty = min(MAX_STACK_QTY, credits // price)
+            spendable = int(credits * 0.8)
+            qty = min(MAX_STACK_QTY, spendable // price)
             if qty < 1:
                 print(c("Not enough credits to buy even one unit of that item.", RED))
             else:
