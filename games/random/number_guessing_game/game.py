@@ -12,6 +12,7 @@ def run():
     while tries > 0:
         if not (inp := input("\nEnter a number 1~100: ")).isdigit():
             print("\nInvalid input: Only enter digits. Try again.")
+            continue
 
         inp = int(inp)
 
