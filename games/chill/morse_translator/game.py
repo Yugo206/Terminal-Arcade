@@ -40,7 +40,7 @@ Choose an option:
 [3] Quit\n''')
     # Keep asking until a valid menu option is entered
     while (mode := input('> ')) not in ('1', '2', '3'):
-        pass
+        print("Invalid option. Please enter 1, 2, or 3.")
     return mode
 
 def validate_string(message, mode):
@@ -49,7 +49,11 @@ def validate_string(message, mode):
         comparison_list = char_to_morse.keys()
     else:
         comparison_list = morse_to_char.keys()
-    return all(char in comparison_list for char in message)
+    invalid_chars = set(char for char in message if char not in comparison_list)
+    if invalid_chars:
+        print(f'Invalid character(s): {", ".join(invalid_chars)}')
+        return False
+    return True
 
 def run():
     print(f'Morse Code Translator by {AUTHOR}')
@@ -75,3 +79,4 @@ def run():
                 
         print(translated_message)
         mode = choose_mode()
+
